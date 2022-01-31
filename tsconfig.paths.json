@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@Types": [
+        "./shared/interfaces/index.ts"
+      ],
+      "components/*": [
+        "./components/*"
+      ],
+      "@Components": [
+        "./components/index.ts"
+      ],
+      "providers": [
+        "./providers/index.ts"
+      ],
+      "providers/*": [
+        "./providers/*"
+      ],
+      "hooks": [
+        "./hooks/index.ts"
+      ],
+      "hooks/*": [
+        "./hooks/*"
+      ],
+      "assets/*": [
+        "./assets/*"
+      ]
+    }
+  }
+}

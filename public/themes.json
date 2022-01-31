@@ -1,0 +1,79 @@
+[
+  {
+    "handle": "light",
+    "name": "Light",
+    "primary": 206,
+    "bg": {
+      "s": 0,
+      "l": 100
+    },
+    "secondary": 23,
+    "type": "light"
+  },
+  {
+    "handle": "daylight",
+    "name": "Daylight",
+    "primary": 206,
+    "bg": {
+      "s": 100,
+      "l": 96
+    },
+    "secondary": 23,
+    "type": "light"
+  },
+  {
+    "handle": "dim",
+    "name": "Dim",
+    "primary": 23,
+    "bg": {
+      "s": 10,
+      "l": 17
+    },
+    "secondary": 120,
+    "type": "dark"
+  },
+  {
+    "handle": "dark",
+    "name": "Dark",
+    "primary": 120,
+    "bg": {
+      "s": 50,
+      "l": 4
+    },
+    "secondary": 320,
+    "type": "dark"
+  },
+  {
+    "handle": "night",
+    "name": "Night",
+    "primary": 300,
+    "bg": {
+      "s": 0,
+      "l": 4
+    },
+    "secondary": 200,
+    "type": "dark"
+  },
+  {
+    "handle": "liskdark",
+    "name": "Lisk dark",
+    "primary": 224,
+    "bg": {
+      "s": 59,
+      "l": 11
+    },
+    "secondary": 120,
+    "type": "dark"
+  },
+  {
+    "handle": "light",
+    "name": "Light",
+    "primary": 206,
+    "bg": {
+      "s": 0,
+      "l": 100
+    },
+    "secondary": 23,
+    "type": "light"
+  }
+]

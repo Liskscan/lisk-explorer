@@ -1,0 +1,110 @@
+
+.liskScan-liskdark {
+    /*--color-text: var(--color-morph-2-800);*/
+    /* LISK KLEUREN TOEGEVOEGD */
+    --color-lisk-zodiac-blue: hsl(224, 59%, 11%);
+    --color-lisk-ultramarine-blue: #335ed4;
+    --color-lisk-ink-blue: hsl(222, 61%, 37%);
+
+    --color-lisk-silver-gray: #c5cfe4;
+    --color-lisk-platinum-gray: hsl(218, 42%, 91%);
+    --color-lisk-athens-white: hsl(210, 33%, 98%);
+
+    --color-lisk-ufo-green: hsl(148, 68%, 50%);
+    --color-lisk-ufo-green-opacity: hsl(148, 68%, 93%);
+    --color-lisk-ufo-green-opacity-dark: hsl(152, 30%, 17%);
+    --color-lisk-copacabana-yellow: hsl(51, 90%, 70%);
+    --color-lisk-candy-pink: hsl(359, 100%, 91%);
+    --color-lisk-fury-red: hsl(354, 100%, 64%);
+    --color-lisk-white: hsl(0, 0%, 98%);
+
+    --color-primary: var(--color-lisk-ultramarine-blue);
+    --color-primaryLight: var(--color-lisk-ink-blue);
+    --color-onPrimary: var(--color-lisk-athens-white);
+
+    --color-onPrimaryHigh: var(--color-lisk-athens-white);
+    --color-onPrimaryMedium: var(--color-lisk-platinum-gray);
+    --color-onPrimaryLow: var(--color-lisk-silver-gray);
+
+    --color-primaryDark: var(--color-lisk-silver-gray);
+
+    --color-secondary: var(--color-lisk-ufo-green);
+    --color-onSecondary: var(--color-lisk-zodiac-blue);
+
+    --color-onSurfaceLinkHigh: hsl(224, 89%, 80%);
+    --color-onSurfaceLinkMedium: hsl(224, 89%, 80%);
+    --color-onSurfaceLinkLow: hsl(224, 89%, 80%);
+
+    --color-onPrimaryLinkHigh: hsl(224, 89%, 80%);
+    --color-onPrimaryLinkMedium: hsl(224, 89%, 80%);
+    --color-onPrimaryLinkLow: hsl(224, 89%, 80%);
+
+
+    --color-background: var(--color-lisk-zodiac-blue);
+    --color-onBackgroundHigh: var(--color-lisk-white);
+    --color-onBackgroundMedium: var(--color-lisk-platinum-gray);
+    --color-onBackgroundLow: var(--color-lisk-silver-gray);
+
+    --color-header: var(--color-primaryLight);
+    --color-onHeader: var(--color-lisk-athens-white);
+
+    --color-topbar: var(--color-lisk-zodiac-blue);
+    --color-onTopbar: var(--color-lisk-silver-gray);
+
+    --color-menuButton: var(--color-primaryLight);
+    --color-onMenuButton: var(--color-onPrimaryLow);
+
+    --color-infobar: #335ed4;
+    --color-onInfobar: var(--color-lisk-athens-white);
+
+    --color-footer: var(--color-lisk-zodiac-blue);
+    --color-onFooter: var(--color-onSurfaceHigh);
+
+    --color-onSurfaceHigh: hsl(0, 0%, 87%);
+    --color-onSurfaceMedium: hsl(0, 0%, 60%);
+    --color-onSurfaceLow: hsl(0, 0%, 80%);
+    --color-onSurface: hsl(0, 0%, 80%);
+
+    --color-onSurfacePrimaryHigh: hsl(224, 89%, 80%);
+    --color-onSurfacePrimaryMedium: hsl(224, 89%, 80%);
+    --color-onSurfacePrimaryLow: hsl(224, 89%, 80%);
+
+    --color-surface: hsla(224, 41%, 16%, 0);
+    --color-surface-1: hsl(224, 41%, 16%);
+    --color-surface-2: var(--color-lisk-zodiac-blue);
+    --color-surface-3: hsla(224, 89%, 70%, 0.3);
+    --color-surface-4: hsl(224, 5%, 25%);
+    --color-surface-5: hsl(224, 5%, 26%);
+    --color-surface-6: hsl(224, 5%, 27%);
+    --color-surface-7: hsl(224, 5%, 29%);
+    --color-surface-8: hsl(224, 5%, 30%);
+
+
+    --color-yellow: var(--color-lisk-copacabana-yellow);
+    --color-red: var(--color-lisk-fury-red);
+    --color-green: var(--color-lisk-ufo-green);
+
+    --color-onError: hsl(354, 70%, 21%);
+    --color-error: hsl(354, 89%, 60%);
+    --color-onSuccess: hsl(148, 70%, 21%);
+    --color-success: hsl(148, 89%, 60%);
+    --color-info: hsl(224, 89%, 60%);
+    --color-onInfo: hsl(224, 89%, 93%);
+    --color-warning: hsl(41, 89%, 60%);
+    --color-onWarning: hsl(39, 70%, 21%);
+}
+
+
+.liskScan-liskdark .tableRowEven {
+    background-color: #1C2542;
+}
+
+.liskScan-liskdark .tableRow {
+    border-bottom-color: hsla(224, 0%, 40%, 0.4);
+}
+
+.liskScan-liskdark .tableHeadColumn {
+    background-color: hsla(224, 89%, 80%, 0.3);
+    color: var(--color-lisk-athens-white);
+}
+

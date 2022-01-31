@@ -1,0 +1,4 @@
+{
+  "name": "lisk-explorer",
+  "script": "yarn start"
+}

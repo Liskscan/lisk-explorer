@@ -1,0 +1,91 @@
+
+.liskScan-night {
+    /* LISK KLEUREN TOEGEVOEGD */
+    --color-lisk-zodiac-blue: hsl(224, 59%, 11%);
+    --color-lisk-ultramarine-blue: #335ed4;
+    --color-lisk-ink-blue: hsl(222, 61%, 37%);
+
+    --color-lisk-silver-gray: #c5cfe4;
+    --color-lisk-platinum-gray: hsl(218, 42%, 91%);
+    --color-lisk-athens-white: hsl(210, 33%, 98%);
+
+    --color-lisk-ufo-green: hsl(148, 68%, 50%);
+    --color-lisk-ufo-green-opacity: hsl(148, 68%, 93%);
+    --color-lisk-ufo-green-opacity-dark: hsl(152, 30%, 17%);
+    --color-lisk-copacabana-yellow: hsl(51, 90%, 70%);
+    --color-lisk-candy-pink: hsl(359, 100%, 91%);
+    --color-lisk-fury-red: hsl(354, 100%, 64%);
+    --color-lisk-white: hsl(0, 0%, 98%);
+    /*--color-text: var(--color-morph-2-800);*/
+
+    --color-primaryLight: hsl(var(--theme-primary), 83%, 70%);
+    --color-primary: hsl(var(--theme-primary), 77%, 60%);
+    --color-primaryDark: hsl(var(--theme-primary), 50%, 50%);
+    --color-onPrimary: var(--color-lisk-white);
+
+    --color-onPrimaryHigh: hsl(var(--theme-primary), 100%, 13%);
+    --color-onPrimaryMedium: hsl(var(--theme-primary), 100%, 40%);
+    --color-onPrimaryLow: hsl(var(--theme-primary), 100%, 38%);
+
+    --color-secondary: hsl(calc(var(--theme-primary) + 180), 69%, 52%, 1);
+    --color-onSecondary: hsl(calc(var(--theme-primary) + 180), 90%, 90%);
+
+    --color-onSurfaceLinkHigh: hsl(var(--theme-primary), 50%, 80%, 0.8);
+    --color-onSurfaceLinkMedium: hsl(var(--theme-primary), 50%, 70%, 0.7);
+    --color-onSurfaceLinkLow: hsl(var(--theme-primary), 50%, 60%, 0.38);
+
+    --color-onPrimaryLinkHigh: hsl(var(--theme-primary), 77%, 100%, 0.87);
+    --color-onPrimaryLinkMedium: hsl(var(--theme-primary), 77%, 100%, 0.60);
+    --color-onPrimaryLinkLow: hsl(var(--theme-primary), 77%, 100%, 0.38);
+
+    --color-background: hsl(0, 0%, 4%);
+    --color-onBackgroundHigh: hsla(0, 0%, 100%, 0.87);
+    --color-onBackgroundMedium: hsla(0, 0%, 100%, 0.60);
+    --color-onBackgroundLow: hsla(0, 0%, 100%, 0.38);
+
+
+    --color-onSurfaceHigh: hsl(0, 0%, 87%);
+    --color-onSurfaceMedium: hsl(0, 0%, 60%);
+    --color-onSurfaceLow: hsl(0, 0%, 38%);
+
+    --color-onSurfacePrimaryHigh: hsl(var(--theme-primary), 77%, 52%, 0.97);
+    --color-onSurfacePrimaryMedium: hsl(var(--theme-primary), 50%, 80%, 0.8);
+    --color-onSurfacePrimaryLow: hsl(var(--theme-primary), 77%, 52%, 0.48);
+
+    --color-surface: hsl(0, 0%, 7%, 0);
+    --color-surface-1: hsl(231, 22%, 12%);
+    --color-surface-2: hsl(231, 22%, 10%);
+    --color-surface-3: hsl(231, 22%, 8%);
+    --color-surface-4: hsl(231, 22%, 6%);
+    --color-surface-5: hsl(0, 0%, 17%);
+    --color-surface-6: hsl(0, 0%, 17%);
+    --color-surface-7: hsl(0, 0%, 19%);
+    --color-surface-8: hsl(0, 0%, 20%);
+
+    --color-header: var(--color-background);
+    --color-onHeader: var(--color-background);
+    --color-topbar: var(--color-background);
+    --color-onTopbar: var(--color-onBackgroundMedium);
+    --color-menuButton: var(--color-surface-3);
+    --color-onMenuButton: var(--color-onPrimaryMedium);
+    --color-infobar: var(--color-background);
+    --color-onInfobar: var(--color-onBackgroundMedium);
+    --color-footer: var(--color-background);
+    --color-onFooter: var(--color-onBackgroundMedium);
+
+
+    --color-yellow: var(--color-lisk-copacabana-yellow);
+    --color-red: var(--color-lisk-fury-red);
+    --color-green: var(--color-lisk-ufo-green);
+
+    --color-onError: hsl(354, 70%, 60%);
+    --color-error: hsl(354, 89%, 30%);
+
+    --color-onSuccess: hsl(148, 70%, 60%);
+    --color-success: hsl(148, 89%, 30%);
+
+    --color-info: hsl(224, 89%, 60%);
+    --color-onInfo: hsl(224, 89%, 93%);
+    --color-warning: hsl(41, 89%, 60%);
+    --color-onWarning: hsl(39, 70%, 21%);
+}

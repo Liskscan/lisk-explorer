@@ -1,0 +1,309 @@
+@import "variables.css";
+@import "light.css";
+@import "dark.css";
+@import "daylight.css";
+@import "night.css";
+@import "dim.css";
+@import "liskdark.css";
+@import "halloween.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.tableRow {
+    border-bottom-width: 1px;
+    border-bottom-color: var(--color-surface-1);
+}
+
+@keyframes changePlaceRight {
+    0% {
+        right: 10px;
+        bottom: 0;
+        opacity: 0;
+        width: 0px;
+    }
+    20% {
+        right: 70px;
+        bottom: 30px;
+        opacity: .5;
+        width: 200px;
+    }
+    40% {
+        right: 10px;
+        bottom: 100px;
+        opacity: .8;
+        width: 120px;
+    }
+    60% {
+        right: 20px;
+        bottom: 50px;
+        width: 30px;
+        opacity: 0;
+    }
+    100% {
+        right: 120px;
+        bottom: 120px;
+        width: 80px;
+        opacity: .4;
+    }
+}
+
+@keyframes changePlaceLeft {
+    0% {
+        left: 10px;
+        bottom: 0;
+        opacity: 0;
+        width: 0px;
+    }
+    20% {
+        left: 70px;
+        bottom: 30px;
+        opacity: .5;
+        width: 200px;
+    }
+    40% {
+        left: 10px;
+        bottom: 100px;
+        opacity: .8;
+        width: 120px;
+    }
+    60% {
+        left: 20px;
+        bottom: 50px;
+        width: 30px;
+        opacity: 0;
+    }
+    100% {
+        left: 120px;
+        bottom: 120px;
+        width: 80px;
+        opacity: .4;
+    }
+}
+
+@keyframes toggleIn {
+    0% {
+        opacity: 0.3;
+        color: greenyellow;
+    }
+    100% {
+        opacity: 1;
+        color: white;
+    }
+}
+
+@keyframes toggleInLight {
+    0% {
+        opacity: 0.5;
+    }
+    30% {
+        opacity: 0.9;
+    }
+    60% {
+        opacity: 0.7;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+
+.loading {
+    display: none
+}
+
+.no-saturation .react-colorful__saturation {
+    display: none;
+}
+
+.noscrollbar::-webkit-scrollbar {
+    width: 0;
+    background: transparent; /* make scrollbar transparent */
+}
+
+:focus {
+    outline: none !important;
+}
+
+html {
+    font-family: poppins, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    /* 1 */
+    line-height: 1.5;
+    /* 2 */
+}
+
+button {
+    position: relative;
+    overflow: hidden;
+    transition: background 400ms;
+}
+
+span.ripple {
+    position: absolute;
+    border-radius: 50%;
+    transform: scale(0);
+    animation: ripple 600ms linear;
+    background-color: var(--color-primary);
+}
+
+@keyframes ripple {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+body {
+    font-size: 13px;
+    padding: 0px;
+}
+
+.searchSpinner {
+    border-top-color: var(--color-onSurfaceMedium);
+    -webkit-animation: spinner 1s linear infinite;
+    animation: spinner 1s linear infinite;
+}
+
+@-webkit-keyframes spinner {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spinner {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+.pathedGhost {
+    /* remove any of these individual animations to simplify the resulting animation */
+    animation: distance 4000ms infinite alternate ease-in-out,
+    rotate 3333ms infinite alternate ease-in-out,
+    anchorGhost 2000ms infinite alternate ease-in-out,
+    pathGhost 6000ms infinite alternate ease-in-out,
+    opacityGhost 4000ms infinite alternate ease-in-out,
+    scaleGhost 4000ms infinite alternate ease-in-out
+}
+
+.pathedGhost {
+    offset-path: path('M0,0 C40,240 200,240 240,0');
+    position: absolute;
+}
+
+.ghostBody {
+    animation: scaleGhostBody 4000ms infinite alternate ease-in-out;
+}
+
+
+@keyframes distance {
+    100% {
+        offset-distance: 100%;
+    }
+}
+
+@keyframes rotate {
+    0% {
+        offset-rotate: auto 0deg;
+    }
+    100% {
+        offset-rotate: auto 360deg;
+    }
+}
+
+@keyframes opacityGhost {
+    0% {
+        opacity: 0;
+        left: 100px;
+        top: 100px;
+    }
+    10% {
+        opacity: 0.3;
+    }
+    30% {
+        opacity: 0.6;
+    }
+    50% {
+        opacity: 0.9;
+    }
+    60% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 0.1;
+        left: 800px;
+        top: 800px;
+    }
+}
+
+@keyframes scaleGhost {
+    0% {
+        height: 0;
+        width: 0;
+    }
+    40% {
+        height: 1200px;
+        width: 1200px;
+    }
+    80% {
+        height: 600px;
+        width: 600px;
+    }
+    100% {
+        height: 500px;
+        width: 500px;
+    }
+}
+
+@keyframes scaleGhostBody {
+    0% {
+        height: 0;
+        width: 0;
+    }
+    40% {
+        height: 1200px;
+        width: 1200px;
+    }
+    80% {
+        height: 600px;
+        width: 600px;
+    }
+    100% {
+        height: 500px;
+        width: 500px;
+    }
+}
+
+@keyframes anchorGhost {
+    0% {
+        offset-anchor: 50% 50%;
+    }
+    40% {
+        offset-anchor: -30% 80%;
+    }
+    100% {
+        offset-anchor: 90% -20%;
+    }
+}
+
+@keyframes pathGhost {
+    100% {
+        offset-path: path('M0,200 C40,-40 200,-40 240,200')
+    }
+}
+
+codeGhost {
+    position: absolute;
+    top: 100px;
+    right: 10px;
+    left: 10px;
+    line-height: 1.5;
+}

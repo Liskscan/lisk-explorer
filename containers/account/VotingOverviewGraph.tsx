@@ -2,16 +2,12 @@ import { FC } from "react"
 import { Doughnut } from "react-chartjs-2"
 import { Currency } from "components/ui/Currency"
 import { Paper } from "components/ui"
-import { useTheme } from "providers/Theme"
 import { convertBeddowsToLSK } from "utils/lisk"
 import { DelegateAccountData } from "@Types"
 
 export const VotingOverviewGraph: FC<{ delegate: DelegateAccountData }> = ({
   delegate,
 }) => {
-  const { selectedTheme } = useTheme()
-  const borderColor = `hsl(${selectedTheme?.primary || 0},
-  ${selectedTheme?.bg?.s}%,${selectedTheme?.bg?.l}%)`
   return (
     <Paper
       surface={0}
@@ -43,7 +39,6 @@ export const VotingOverviewGraph: FC<{ delegate: DelegateAccountData }> = ({
                 animation: false,
                 //@ts-ignore
                 borderWidth: 4,
-                borderColor,
                 hoverBorder: 10,
                 plugins: {
                   legend: {

@@ -1,23 +1,9 @@
 
-.liskScan-liskdark {
-    /*--color-text: var(--color-morph-2-800);*/
-    /* LISK KLEUREN TOEGEVOEGD */
-    --color-lisk-zodiac-blue: hsl(224, 59%, 11%);
-    --color-lisk-ultramarine-blue: #335ed4;
-    --color-lisk-ink-blue: hsl(222, 61%, 37%);
+html {
+    background-color: #0c142d;
+}
 
-    --color-lisk-silver-gray: #c5cfe4;
-    --color-lisk-platinum-gray: hsl(218, 42%, 91%);
-    --color-lisk-athens-white: hsl(210, 33%, 98%);
-
-    --color-lisk-ufo-green: hsl(148, 68%, 50%);
-    --color-lisk-ufo-green-opacity: hsl(148, 68%, 93%);
-    --color-lisk-ufo-green-opacity-dark: hsl(152, 30%, 17%);
-    --color-lisk-copacabana-yellow: hsl(51, 90%, 70%);
-    --color-lisk-candy-pink: hsl(359, 100%, 91%);
-    --color-lisk-fury-red: hsl(354, 100%, 64%);
-    --color-lisk-white: hsl(0, 0%, 98%);
-
+.explorer-theme {
     --color-primary: var(--color-lisk-ultramarine-blue);
     --color-primaryLight: var(--color-lisk-ink-blue);
     --color-onPrimary: var(--color-lisk-athens-white);

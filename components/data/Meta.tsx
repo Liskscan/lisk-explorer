@@ -6,7 +6,7 @@ export const Meta: FC<{ title?: string }> = ({ title }) => {
     <Head>
       <title>
         {title ||
-          `${process.env.NEXT_PUBLIC_EXPLORER_TITLE}-${process.env.NEXT_PUBLIC_EXPLORER_SUB_TITLE}`}
+          `${process.env.NEXT_PUBLIC_EXPLORER_TITLE} ${process.env.NEXT_PUBLIC_EXPLORER_SUB_TITLE}`}
       </title>
     </Head>
   )

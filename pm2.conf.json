@@ -1,4 +1,4 @@
 {
   "name": "lisk-explorer",
-  "script": "yarn start"
+  "script": "npm run start"
 }

@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "Lisk agnostic explorer connect to lisk-service and start exploring your blockchain",
   "scripts": {
+    "init": "npm install --ignore-engines && npm run build",
     "dev": "next",
     "build": "next build",
     "start": "next start"

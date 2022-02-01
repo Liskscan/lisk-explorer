@@ -12,7 +12,10 @@ For the explorer to run you need at least node v12
 | NodeJS       | 12+    |
 
 ### Clone
-```git clone https://github.com/liskscan/lisk-explorer.git```
+```
+git clone https://github.com/liskscan/lisk-explorer.git
+cd lisk-explorer
+```
 
 ### Configure the explorer
 Edit the `.env` file variables to configure your explorer.

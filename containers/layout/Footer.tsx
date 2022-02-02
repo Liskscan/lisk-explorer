@@ -1,6 +1,6 @@
 import { FC } from "react"
 import { FooterLinks } from "./FooterLinks"
-import { LinkedinIcon, TwitterIcon } from "shared/icons"
+import { TwitterIcon } from "shared/icons"
 import { FooterData } from "./data"
 
 export const Footer: FC = () => (
@@ -20,13 +20,6 @@ export const Footer: FC = () => (
                 <b>Socials</b>
               </div>
               <div className="w-full justify-center flex flex-row space-x-3">
-                <a
-                  href={"https://www.linkedin.com/company/moosty/"}
-                  target={"_blank"}
-                  rel={"noopener nofollow noreferrer"}
-                >
-                  <LinkedinIcon className="cursor-pointer text-onFooter" />
-                </a>
                 <a
                   href={"https://twitter.com/Liskscan"}
                   target={"_blank"}

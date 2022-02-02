@@ -103,9 +103,9 @@ export const TopBarData: TopBarType = {
         ),
       },
       {
-        label: "Account Analyzer",
-        subLabel: "Check what is going on with your account.",
-        link: "/analyze",
+        label: "Your custom page here",
+        subLabel: "Customize the explorer fully",
+        link: "/",
         icon: (
           <svg
             xmlns="http://www.w3.org/2000/svg"

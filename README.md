@@ -47,8 +47,8 @@ NEXT_PUBLIC_LOCAL_NETWORK_HTTP=http://localhost:9292
 ```npm run build```
 
 ## Configure
-- edit configuration in .env
-- change the theme colors in styles/theme.css
+- Edit configuration in .env
+- Change the theme colors in styles/theme.css
 - Don't forget to run `npm run build` after any changes
 
 # License

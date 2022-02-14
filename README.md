@@ -7,9 +7,13 @@ Lisk-explorer is built with NextJS and connects directly to the `lisk-service` g
 #### Dependencies
 For the explorer to run you need at least node v12
 
-| Dependencies | Version |
-| ------------ |--------|
-| NodeJS       | 12+    |
+| Dependencies | Versions | Tested on versions |
+| ------------ |----------|--------------------|
+| NodeJS       | 12+      | 12, 14, 16         |
+| Lisk Service | 0.6.0.   | 0.6.0              |
+
+### Lisk Service
+Lisk explorer uses Lisk service as it's data source. For more information about installing Lisk service look [here](https://github.com/LiskHQ/lisk-service#installation).
 
 ### Clone
 ```
@@ -20,12 +24,15 @@ cd lisk-explorer
 ### Configure the explorer
 Edit the `.env` file variables to configure your explorer.
 
-The `public` network hosts need to be reachable through the browser
+The `NEXT_PUBLIC_NETWORK_WS` and `NEXT_PUBLIC_NETWORK_HTTP` should point to your Lisk service gateway and needs to be reachable through the browser
 ```dotenv
-NEXT_PUBLIC_NETWORK_WS=wss://public-gateway-host.com
-NEXT_PUBLIC_NETWORK_HTTP=https://public-gateway-host.com
+NEXT_PUBLIC_NETWORK_WS=wss://public-service-gateway-host.com
+NEXT_PUBLIC_NETWORK_HTTP=https://public-service-gateway-host.com
 ```
-The `local` network hosts need to be reachable at the machine the explorer runs on
+The `NEXT_PUBLIC_LOCAL_NETWORK_WS` and `NEXT_PUBLIC_LOCAL_NETWORK_HTTP` should point to your Lisk service gateway and need to be reachable at the machine this explorer runs on.
+
+*Preferably use service on the same machine this explorer runs on for better performance*
+
 ```dotenv
 NEXT_PUBLIC_LOCAL_NETWORK_WS=ws://localhost:9292
 NEXT_PUBLIC_LOCAL_NETWORK_HTTP=http://localhost:9292
@@ -34,17 +41,19 @@ NEXT_PUBLIC_LOCAL_NETWORK_HTTP=http://localhost:9292
 ### Install NodeJS dependencies and build Lisk Explorer
 ```npm run init```
 
+### Build explorer
+```npm run build```
+
 ### Start explorer
 ```npm run start```
+
+*After updating the `.env` always run `npm run build` first*
 
 ### Start pm2
 ```pm2 start pm2.conf.json```
 
 ### Run dev mode
 ```npm run dev```
-
-### Build explorer
-```npm run build```
 
 ## Configure
 - Edit configuration in .env

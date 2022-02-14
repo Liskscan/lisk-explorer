@@ -81,15 +81,15 @@ html {
 }
 
 
-.liskScan-liskdark .tableRowEven {
+.explorer-theme .tableRowEven {
     background-color: #1C2542;
 }
 
-.liskScan-liskdark .tableRow {
+.explorer-theme .tableRow {
     border-bottom-color: hsla(224, 0%, 40%, 0.4);
 }
 
-.liskScan-liskdark .tableHeadColumn {
+.explorer-theme .tableHeadColumn {
     background-color: hsla(224, 89%, 80%, 0.3);
     color: var(--color-lisk-athens-white);
 }

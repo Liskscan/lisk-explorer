@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react"
+import { FC, useEffect, useState, useRef } from "react"
 import { IconButton, KeyValueRow, Paper } from "components/ui"
 import {
   ArrowDownIcon,
@@ -27,6 +27,7 @@ export const AccountDetails: FC<{
   send?: number | null
   lastBlockSSR?: BlockDataType | null
 }> = ({ account, send, received, lastBlockSSR }) => {
+  const timeoutRef = useRef<NodeJS.Timeout>()
   const { serviceClient } = useLiskService()
   const [transactionsCount, setTransactionsCount] =
     useState<{ in: number; out: number }>()
@@ -75,13 +76,12 @@ export const AccountDetails: FC<{
     }
   }, [serviceClient, account])
 
-  const [copyNoteToggle, setCopyNoteToggle] = useState<boolean>(false)
   const [copyNoteText, setCopyNoteText] = useState<string>("")
-  const copyNotification = (text: string) => {
-    setCopyNoteToggle(true)
-    setCopyNoteText(text)
-    setTimeout(() => setCopyNoteToggle(false), 5000)
-  }
+  useEffect(() => {
+      timeoutRef.current && clearTimeout(timeoutRef.current)
+      timeoutRef.current = setTimeout(() => setCopyNoteText(""), 5000)
+    }
+  ,[copyNoteText])
 
   return (
     <Paper
@@ -125,7 +125,7 @@ export const AccountDetails: FC<{
             <CopyToClipboard
               text={account?.summary?.username || account?.summary?.address}
             >
-              <IconButton onClick={copyNotification.bind(this, "Username copied")} className=" focus:text-accentPrimary text-surfacePrimaryDark ">
+              <IconButton onClick={() => setCopyNoteText("Username copied")} className=" focus:text-accentPrimary text-surfacePrimaryDark ">
                 <DuplicateIcon className="h-4 w-4 hover:text-onSurfacePrimaryMedium focus:text-accentPrimary text-surfacePrimaryDark text-xs" />
               </IconButton>
             </CopyToClipboard>
@@ -149,7 +149,7 @@ export const AccountDetails: FC<{
           icon={
             <CopyToClipboard
               text={account?.summary?.address || ""}>
-              <IconButton onClick={copyNotification.bind(this, "Address copied")} className=" focus:text-accentPrimary text-surfacePrimaryDark ">
+              <IconButton onClick={() => setCopyNoteText( "Address copied")} className=" focus:text-accentPrimary text-surfacePrimaryDark ">
                 <DuplicateIcon className="h-4 w-4 hover:text-onSurfacePrimaryMedium focus:text-accentPrimary text-surfacePrimaryDark text-xs" />
               </IconButton>
             </CopyToClipboard>
@@ -162,7 +162,7 @@ export const AccountDetails: FC<{
         icon={
           account?.summary?.publicKey ? (
             <CopyToClipboard text={account?.summary?.publicKey || ""}>
-              <IconButton onClick={copyNotification.bind(this, "Public key copied")} className=" focus:text-accentPrimary text-surfacePrimaryDark ">
+              <IconButton onClick={() => setCopyNoteText( "Public key copied")} className=" focus:text-accentPrimary text-surfacePrimaryDark ">
                 <DuplicateIcon className="h-4 w-4 hover:text-onSurfacePrimaryMedium focus:text-accentPrimary text-surfacePrimaryDark text-xs" />
               </IconButton>
             </CopyToClipboard>
@@ -205,7 +205,7 @@ export const AccountDetails: FC<{
               ).toString("hex")
             }
           >
-            <IconButton onClick={copyNotification.bind(this, "Hex address copied")} className=" focus:text-accentPrimary text-surfacePrimaryDark ">
+            <IconButton onClick={() => setCopyNoteText( "Hex address copied")} className=" focus:text-accentPrimary text-surfacePrimaryDark ">
               <DuplicateIcon className="h-4 w-4 hover:text-onSurfacePrimaryMedium focus:text-accentPrimary text-surfacePrimaryDark text-xs" />
             </IconButton>
           </CopyToClipboard>
@@ -236,7 +236,7 @@ export const AccountDetails: FC<{
           className={"text-center whitespace-nowrap "}
           icon={
             <CopyToClipboard text={legacy}>
-              <IconButton onClick={copyNotification.bind(this, "Legacy address copied")} className=" focus:text-accentPrimary text-surfacePrimaryDark ">
+              <IconButton onClick={() => setCopyNoteText( "Legacy address copied")} className=" focus:text-accentPrimary text-surfacePrimaryDark ">
                 <DuplicateIcon className="h-4 w-4 hover:text-onSurfacePrimaryMedium focus:text-accentPrimary text-surfacePrimaryDark text-xs" />
               </IconButton>
             </CopyToClipboard>
@@ -302,7 +302,7 @@ export const AccountDetails: FC<{
           value={lastBlock?.seedReveal || "0"}
         />
       )}
-      {copyNoteToggle && <Snackbar message={copyNoteText} toggleState={setCopyNoteToggle}/>}
+      {(copyNoteText != "") && <Snackbar message={copyNoteText} toggleState={setCopyNoteText}/>}
     </Paper>
   )
 }

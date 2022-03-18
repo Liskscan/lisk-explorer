@@ -1,4 +1,4 @@
-import {FC, useState} from "react"
+import {FC, useEffect, useRef, useState} from "react"
 import { CopyToClipboard } from "react-copy-to-clipboard"
 import { TransactionDataType } from "@moosty/lisk-service-provider"
 import { IconButton, KeyValueRow, Link, Paper } from "components/ui"
@@ -9,13 +9,14 @@ import {Snackbar} from "components/ui/Snackbar";
 export const GeneralDetails: FC<{ transaction: TransactionDataType }> = ({
   transaction,
 }) => {
-  const [copyNoteToggle, setCopyNoteToggle] = useState<boolean>(false)
+  const timeoutRef = useRef<NodeJS.Timeout>()
   const [copyNoteText, setCopyNoteText] = useState<string>("")
-  const copyNotification = (text: string) => {
-    setCopyNoteToggle(true)
-    setCopyNoteText(text)
-    setTimeout(() => setCopyNoteToggle(false), 5000)
-  }
+  useEffect(() => {
+      timeoutRef.current && clearTimeout(timeoutRef.current)
+      timeoutRef.current = setTimeout(() => setCopyNoteText(""), 5000)
+    }
+    ,[copyNoteText])
+
 
   return (
     <div className="flex flex-col md:flex-row w-full mx-auto md:space-x-4 justify-center mb-1 md:mb-4">
@@ -35,7 +36,7 @@ export const GeneralDetails: FC<{ transaction: TransactionDataType }> = ({
                 compactOnMobile
                 icon={
                   <CopyToClipboard text={transaction?.id.toString() || ""}>
-                    <IconButton onClick={copyNotification.bind(this, "Transaction ID copied")} className="focus:text-accentPrimary text-surfacePrimaryDark">
+                    <IconButton onClick={() => setCopyNoteText( "Transaction ID copied")} className="focus:text-accentPrimary text-surfacePrimaryDark">
                       <DuplicateIcon
                         className={[
                           "h-4 w-4 hover:text-onSurfacePrimaryLow",
@@ -82,7 +83,7 @@ export const GeneralDetails: FC<{ transaction: TransactionDataType }> = ({
                       ""
                     }
                   >
-                    <IconButton onClick={copyNotification.bind(this, "Sender address copied")} className="focus:text-accentPrimary text-surfacePrimaryDark m-0 p-0">
+                    <IconButton onClick={() => setCopyNoteText( "Sender address copied")} className="focus:text-accentPrimary text-surfacePrimaryDark m-0 p-0">
                       <DuplicateIcon
                         className={[
                           "h-4 w-4 hover:text-onSurfacePrimaryLow",
@@ -102,7 +103,7 @@ export const GeneralDetails: FC<{ transaction: TransactionDataType }> = ({
                 value={transaction?.sender?.publicKey}
                 icon={
                   <CopyToClipboard text={transaction?.sender?.publicKey || ""}>
-                    <IconButton onClick={copyNotification.bind(this, "Sender public key copied")} className="focus:text-accentPrimary text-surfacePrimaryDark">
+                    <IconButton onClick={() => setCopyNoteText( "Sender public key copied")} className="focus:text-accentPrimary text-surfacePrimaryDark">
                       <DuplicateIcon
                         className={[
                           "h-4 w-4 hover:text-onSurfacePrimaryLow",
@@ -147,7 +148,7 @@ export const GeneralDetails: FC<{ transaction: TransactionDataType }> = ({
                     <CopyToClipboard
                       text={transaction?.asset?.recipient?.address || ""}
                     >
-                      <IconButton onClick={copyNotification.bind(this, "Recipient address copied")} className=" focus:text-accentPrimary text-surfacePrimaryDark ">
+                      <IconButton onClick={() => setCopyNoteText( "Recipient address copied")} className=" focus:text-accentPrimary text-surfacePrimaryDark ">
                         <DuplicateIcon
                           className={[
                             "h-4 w-4 hover:text-onSurfacePrimaryLow m-0 p-0",
@@ -212,7 +213,7 @@ export const GeneralDetails: FC<{ transaction: TransactionDataType }> = ({
             />
           </div>
         </div>
-        {copyNoteToggle && <Snackbar message={copyNoteText} toggleState={setCopyNoteToggle}/>}
+        {(copyNoteText != "") && <Snackbar message={copyNoteText} toggleState={setCopyNoteText}/>}
       </Paper>
     </div>
   )

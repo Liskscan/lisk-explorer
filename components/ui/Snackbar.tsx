@@ -14,7 +14,7 @@ export const Snackbar: FC<{
   return (
     <Dialog
       open={isOpen}
-      onClose={(toggleState != null) ? () => toggleState(false) : () => setIsOpen(false)}
+      onClose={(toggleState != null) ? () => toggleState("") : () => setIsOpen(false)}
       className={[
         `liskScan-${storedTheme}`,
         "fixed z-50 overflow-y-auto w-2/12 top-4 right-4 flex flex-row justify-end",

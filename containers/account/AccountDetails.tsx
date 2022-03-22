@@ -1,4 +1,4 @@
-import { FC, useEffect, useState, useRef } from "react"
+import { FC, useEffect, useState } from "react"
 import { IconButton, KeyValueRow, Paper } from "components/ui"
 import {
   ArrowDownIcon,
@@ -20,6 +20,7 @@ import { CopyHotKey } from "../modals"
 import { compactString } from "../../utils/format"
 import { getAddressFromLisk32Address } from "../../utils/lisk"
 import { Snackbar } from "components/ui/Snackbar";
+import {useNotification} from "hooks/Notification";
 
 export const AccountDetails: FC<{
   account: AccountDataType
@@ -27,7 +28,6 @@ export const AccountDetails: FC<{
   send?: number | null
   lastBlockSSR?: BlockDataType | null
 }> = ({ account, send, received, lastBlockSSR }) => {
-  const timeoutRef = useRef<NodeJS.Timeout>()
   const { serviceClient } = useLiskService()
   const [transactionsCount, setTransactionsCount] =
     useState<{ in: number; out: number }>()
@@ -35,6 +35,7 @@ export const AccountDetails: FC<{
     lastBlockSSR || ({} as BlockDataType),
   )
   const { setInput, legacy } = useAddressConverter()
+  const [copyNoteText, setCopyNoteText] = useNotification("", 5000)
 
   useEffect(() => {
     if (serviceClient && account) {
@@ -75,13 +76,6 @@ export const AccountDetails: FC<{
       getTransactionsInAndOut()
     }
   }, [serviceClient, account])
-
-  const [copyNoteText, setCopyNoteText] = useState<string>("")
-  useEffect(() => {
-      timeoutRef.current && clearTimeout(timeoutRef.current)
-      timeoutRef.current = setTimeout(() => setCopyNoteText(""), 5000)
-    }
-  ,[copyNoteText])
 
   return (
     <Paper

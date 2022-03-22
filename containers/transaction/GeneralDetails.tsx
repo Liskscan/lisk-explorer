@@ -1,22 +1,16 @@
-import {FC, useEffect, useRef, useState} from "react"
+import {FC} from "react"
 import { CopyToClipboard } from "react-copy-to-clipboard"
 import { TransactionDataType } from "@moosty/lisk-service-provider"
 import { IconButton, KeyValueRow, Link, Paper } from "components/ui"
 import { DuplicateIcon } from "@heroicons/react/solid"
 import { compactString, formatTime } from "utils/format"
 import {Snackbar} from "components/ui/Snackbar";
+import {useNotification} from "hooks/Notification";
 
 export const GeneralDetails: FC<{ transaction: TransactionDataType }> = ({
   transaction,
 }) => {
-  const timeoutRef = useRef<NodeJS.Timeout>()
-  const [copyNoteText, setCopyNoteText] = useState<string>("")
-  useEffect(() => {
-      timeoutRef.current && clearTimeout(timeoutRef.current)
-      timeoutRef.current = setTimeout(() => setCopyNoteText(""), 5000)
-    }
-    ,[copyNoteText])
-
+  const [copyNoteText, setCopyNoteText] = useNotification("", 5000)
 
   return (
     <div className="flex flex-col md:flex-row w-full mx-auto md:space-x-4 justify-center mb-1 md:mb-4">

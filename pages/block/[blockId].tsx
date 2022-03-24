@@ -1,5 +1,5 @@
 import React, { FC } from "react"
-import {IconButton, Link, Paper} from "components/ui"
+import { IconButton, Link, Paper } from "components/ui"
 import { KeyValueRow } from "components/ui/KeyValueRow"
 import {
   BlockDataType,
@@ -13,10 +13,10 @@ import { Meta } from "components/data/Meta"
 import { compactString, formatTime } from "utils/format"
 import { Transactions } from "@Components"
 import { localRpc } from "utils"
-import {useNotification} from "hooks/Notification";
-import {CopyToClipboard} from "react-copy-to-clipboard";
-import {DuplicateIcon} from "@heroicons/react/solid";
-import {Snackbar} from "components/ui/Snackbar";
+import { useNotification } from "hooks/Notification"
+import { CopyToClipboard } from "react-copy-to-clipboard"
+import { DuplicateIcon } from "@heroicons/react/solid"
+import { Snackbar } from "components/ui/Snackbar"
 
 export const Block: FC<{
   block: BlockDataType
@@ -49,9 +49,11 @@ export const Block: FC<{
                 compactOnMobile
                 className={"md:text-center whitespace-nowrap "}
                 icon={
-                  <CopyToClipboard
-                    text={block?.id || ""}>
-                    <IconButton onClick={() => setCopyNoteText( "Block ID copied")} className=" focus:text-accentPrimary text-surfacePrimaryDark ">
+                  <CopyToClipboard text={block?.id || ""}>
+                    <IconButton
+                      onClick={() => setCopyNoteText("Block ID copied")}
+                      className=" focus:text-accentPrimary text-surfacePrimaryDark "
+                    >
                       <DuplicateIcon className="h-4 w-4 hover:text-onSurfacePrimaryMedium focus:text-accentPrimary text-surfacePrimaryDark text-xs" />
                     </IconButton>
                   </CopyToClipboard>
@@ -131,9 +133,11 @@ export const Block: FC<{
               value={block?.seedReveal}
               className={""}
               icon={
-                <CopyToClipboard
-                  text={block?.seedReveal || ""}>
-                  <IconButton onClick={() => setCopyNoteText( "Seed copied")} className=" focus:text-accentPrimary text-surfacePrimaryDark ">
+                <CopyToClipboard text={block?.seedReveal || ""}>
+                  <IconButton
+                    onClick={() => setCopyNoteText("Seed copied")}
+                    className=" focus:text-accentPrimary text-surfacePrimaryDark "
+                  >
                     <DuplicateIcon className="h-4 w-4 hover:text-onSurfacePrimaryMedium focus:text-accentPrimary text-surfacePrimaryDark text-xs" />
                   </IconButton>
                 </CopyToClipboard>
@@ -155,7 +159,9 @@ export const Block: FC<{
               className={"md:text-center"}
             />
           </div>
-          {(copyNoteText != "") && <Snackbar message={copyNoteText} toggleState={setCopyNoteText}/>}
+          {copyNoteText !== "" && (
+            <Snackbar message={copyNoteText} toggleState={setCopyNoteText} />
+          )}
         </Paper>
         {blockTransactions && (
           <div className="mx-auto w-full md:w-app max-w-app">

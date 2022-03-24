@@ -1,4 +1,4 @@
-import {useEffect, useRef, useState} from "react"
+import { useEffect, useRef, useState } from "react"
 
 export const useNotification = (
   textValue = "",
@@ -8,11 +8,14 @@ export const useNotification = (
   const [notificationText, setNotificationText] = useState<string>(textValue)
 
   useEffect(() => {
-      timeoutRef.current && clearTimeout(timeoutRef.current)
-      timeoutRef.current = setTimeout(() => setNotificationText(""), delay)
-      return () => {if(timeoutRef.current) { clearTimeout(timeoutRef.current) }}
+    timeoutRef.current && clearTimeout(timeoutRef.current)
+    timeoutRef.current = setTimeout(() => setNotificationText(""), delay)
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current)
+      }
     }
-    ,[notificationText, delay])
+  }, [notificationText, delay])
 
   return [notificationText, setNotificationText]
 }

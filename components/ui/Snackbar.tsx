@@ -1,12 +1,12 @@
-import {FC, useState} from "react"
+import { FC, useState } from "react"
 import { Dialog } from "@headlessui/react"
-import {InformationCircleIcon} from "@heroicons/react/solid";
-import {isBrowser} from "hooks";
+import { InformationCircleIcon } from "@heroicons/react/solid"
+import { isBrowser } from "hooks"
 
 export const Snackbar: FC<{
   message: string
   toggleState?: any
-}> = ({message, toggleState}) => {
+}> = ({ message, toggleState }) => {
   let [isOpen, setIsOpen] = useState(true)
   const storedTheme =
     (isBrowser && window.localStorage.getItem("theme")) || "dark"
@@ -14,7 +14,9 @@ export const Snackbar: FC<{
   return (
     <Dialog
       open={isOpen}
-      onClose={(toggleState != null) ? () => toggleState("") : () => setIsOpen(false)}
+      onClose={
+        toggleState !== null ? () => toggleState("") : () => setIsOpen(false)
+      }
       className={[
         `liskScan-${storedTheme}`,
         "fixed z-50 overflow-y-auto w-2/12 top-4 right-4 flex flex-row justify-end",

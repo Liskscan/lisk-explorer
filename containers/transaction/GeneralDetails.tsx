@@ -4,10 +4,14 @@ import { TransactionDataType } from "@moosty/lisk-service-provider"
 import { IconButton, KeyValueRow, Link, Paper } from "components/ui"
 import { DuplicateIcon } from "@heroicons/react/solid"
 import { compactString, formatTime } from "utils/format"
+import { Snackbar } from "components/ui/Snackbar"
+import { useNotification } from "hooks/Notification"
 
 export const GeneralDetails: FC<{ transaction: TransactionDataType }> = ({
   transaction,
 }) => {
+  const [copyNoteText, setCopyNoteText] = useNotification("", 5000)
+
   return (
     <div className="flex flex-col md:flex-row w-full mx-auto md:space-x-4 justify-center mb-1 md:mb-4">
       <Paper
@@ -26,7 +30,10 @@ export const GeneralDetails: FC<{ transaction: TransactionDataType }> = ({
                 compactOnMobile
                 icon={
                   <CopyToClipboard text={transaction?.id.toString() || ""}>
-                    <IconButton className="focus:text-accentPrimary text-surfacePrimaryDark">
+                    <IconButton
+                      onClick={() => setCopyNoteText("Transaction ID copied")}
+                      className="focus:text-accentPrimary text-surfacePrimaryDark"
+                    >
                       <DuplicateIcon
                         className={[
                           "h-4 w-4 hover:text-onSurfacePrimaryLow",
@@ -73,7 +80,10 @@ export const GeneralDetails: FC<{ transaction: TransactionDataType }> = ({
                       ""
                     }
                   >
-                    <IconButton className="focus:text-accentPrimary text-surfacePrimaryDark m-0 p-0">
+                    <IconButton
+                      onClick={() => setCopyNoteText("Sender address copied")}
+                      className="focus:text-accentPrimary text-surfacePrimaryDark m-0 p-0"
+                    >
                       <DuplicateIcon
                         className={[
                           "h-4 w-4 hover:text-onSurfacePrimaryLow",
@@ -93,7 +103,12 @@ export const GeneralDetails: FC<{ transaction: TransactionDataType }> = ({
                 value={transaction?.sender?.publicKey}
                 icon={
                   <CopyToClipboard text={transaction?.sender?.publicKey || ""}>
-                    <IconButton className="focus:text-accentPrimary text-surfacePrimaryDark">
+                    <IconButton
+                      onClick={() =>
+                        setCopyNoteText("Sender public key copied")
+                      }
+                      className="focus:text-accentPrimary text-surfacePrimaryDark"
+                    >
                       <DuplicateIcon
                         className={[
                           "h-4 w-4 hover:text-onSurfacePrimaryLow",
@@ -138,7 +153,12 @@ export const GeneralDetails: FC<{ transaction: TransactionDataType }> = ({
                     <CopyToClipboard
                       text={transaction?.asset?.recipient?.address || ""}
                     >
-                      <IconButton className=" focus:text-accentPrimary text-surfacePrimaryDark ">
+                      <IconButton
+                        onClick={() =>
+                          setCopyNoteText("Recipient address copied")
+                        }
+                        className=" focus:text-accentPrimary text-surfacePrimaryDark "
+                      >
                         <DuplicateIcon
                           className={[
                             "h-4 w-4 hover:text-onSurfacePrimaryLow m-0 p-0",
@@ -203,6 +223,9 @@ export const GeneralDetails: FC<{ transaction: TransactionDataType }> = ({
             />
           </div>
         </div>
+        {copyNoteText !== "" && (
+          <Snackbar message={copyNoteText} toggleState={setCopyNoteText} />
+        )}
       </Paper>
     </div>
   )

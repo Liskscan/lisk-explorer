@@ -19,6 +19,8 @@ import { clean } from "../../utils/misc"
 import { CopyHotKey } from "../modals"
 import { compactString } from "../../utils/format"
 import { getAddressFromLisk32Address } from "../../utils/lisk"
+import { Snackbar } from "components/ui/Snackbar"
+import { useNotification } from "hooks/Notification"
 
 export const AccountDetails: FC<{
   account: AccountDataType
@@ -33,6 +35,7 @@ export const AccountDetails: FC<{
     lastBlockSSR || ({} as BlockDataType),
   )
   const { setInput, legacy } = useAddressConverter()
+  const [copyNoteText, setCopyNoteText] = useNotification("", 5000)
 
   useEffect(() => {
     if (serviceClient && account) {
@@ -116,7 +119,10 @@ export const AccountDetails: FC<{
             <CopyToClipboard
               text={account?.summary?.username || account?.summary?.address}
             >
-              <IconButton className=" focus:text-accentPrimary text-surfacePrimaryDark ">
+              <IconButton
+                onClick={() => setCopyNoteText("Username copied")}
+                className=" focus:text-accentPrimary text-surfacePrimaryDark "
+              >
                 <DuplicateIcon className="h-4 w-4 hover:text-onSurfacePrimaryMedium focus:text-accentPrimary text-surfacePrimaryDark text-xs" />
               </IconButton>
             </CopyToClipboard>
@@ -139,7 +145,10 @@ export const AccountDetails: FC<{
           className={" whitespace-nowrap "}
           icon={
             <CopyToClipboard text={account?.summary?.address || ""}>
-              <IconButton className=" focus:text-accentPrimary text-surfacePrimaryDark ">
+              <IconButton
+                onClick={() => setCopyNoteText("Address copied")}
+                className=" focus:text-accentPrimary text-surfacePrimaryDark "
+              >
                 <DuplicateIcon className="h-4 w-4 hover:text-onSurfacePrimaryMedium focus:text-accentPrimary text-surfacePrimaryDark text-xs" />
               </IconButton>
             </CopyToClipboard>
@@ -152,7 +161,10 @@ export const AccountDetails: FC<{
         icon={
           account?.summary?.publicKey ? (
             <CopyToClipboard text={account?.summary?.publicKey || ""}>
-              <IconButton className=" focus:text-accentPrimary text-surfacePrimaryDark ">
+              <IconButton
+                onClick={() => setCopyNoteText("Public key copied")}
+                className=" focus:text-accentPrimary text-surfacePrimaryDark "
+              >
                 <DuplicateIcon className="h-4 w-4 hover:text-onSurfacePrimaryMedium focus:text-accentPrimary text-surfacePrimaryDark text-xs" />
               </IconButton>
             </CopyToClipboard>
@@ -195,7 +207,10 @@ export const AccountDetails: FC<{
               ).toString("hex")
             }
           >
-            <IconButton className=" focus:text-accentPrimary text-surfacePrimaryDark ">
+            <IconButton
+              onClick={() => setCopyNoteText("Hex address copied")}
+              className=" focus:text-accentPrimary text-surfacePrimaryDark "
+            >
               <DuplicateIcon className="h-4 w-4 hover:text-onSurfacePrimaryMedium focus:text-accentPrimary text-surfacePrimaryDark text-xs" />
             </IconButton>
           </CopyToClipboard>
@@ -226,7 +241,10 @@ export const AccountDetails: FC<{
           className={"text-center whitespace-nowrap "}
           icon={
             <CopyToClipboard text={legacy}>
-              <IconButton className=" focus:text-accentPrimary text-surfacePrimaryDark ">
+              <IconButton
+                onClick={() => setCopyNoteText("Legacy address copied")}
+                className=" focus:text-accentPrimary text-surfacePrimaryDark "
+              >
                 <DuplicateIcon className="h-4 w-4 hover:text-onSurfacePrimaryMedium focus:text-accentPrimary text-surfacePrimaryDark text-xs" />
               </IconButton>
             </CopyToClipboard>
@@ -291,6 +309,9 @@ export const AccountDetails: FC<{
           label="Last seed reveal"
           value={lastBlock?.seedReveal || "0"}
         />
+      )}
+      {copyNoteText !== "" && (
+        <Snackbar message={copyNoteText} toggleState={setCopyNoteText} />
       )}
     </Paper>
   )

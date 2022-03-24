@@ -76,7 +76,7 @@ export const AccountDetails: FC<{
 
   return (
     <Paper
-      className="md:grid md:mx-auto md:grid-cols-2 md:grid-flow-row md:gap-x-10  max-w-app flex-grow text-onSurfaceHigh p-2 md:p-5 w-full"
+      className="lg:grid lg:mx-auto lg:grid-cols-2 lg:grid-flow-col lg:gap-x-10  max-w-app flex-grow text-onSurfaceHigh p-2 md:p-5 w-full"
       surface={1}
     >
       <CopyHotKey
@@ -107,11 +107,11 @@ export const AccountDetails: FC<{
         <KeyValueRow
           label="Owner"
           value={
-            <span className=" text-onSurfaceLight  ">
+            <span className=" text-onSurfaceLight ">
               {account?.summary?.username || account?.summary?.address}
             </span>
           }
-          className={" whitespace-nowrap "}
+          className={" whitespace-nowrap lg:col-start-1 "}
           icon={
             <CopyToClipboard
               text={account?.summary?.username || account?.summary?.address}
@@ -136,7 +136,7 @@ export const AccountDetails: FC<{
               </span>
             </div>
           }
-          className={" whitespace-nowrap "}
+          className={" whitespace-nowrap lg:col-start-2 "}
           icon={
             <CopyToClipboard text={account?.summary?.address || ""}>
               <IconButton className=" focus:text-accentPrimary text-surfacePrimaryDark ">
@@ -149,6 +149,7 @@ export const AccountDetails: FC<{
       <KeyValueRow
         label="PublicKey"
         value={compactString(account?.summary?.publicKey, 25) || "unknown"}
+        className={"lg:col-start-1"}
         icon={
           account?.summary?.publicKey ? (
             <CopyToClipboard text={account?.summary?.publicKey || ""}>
@@ -185,7 +186,7 @@ export const AccountDetails: FC<{
             </span>
           </div>
         }
-        className={" whitespace-nowrap "}
+        className={" whitespace-nowrap lg:col-start-2 "}
         icon={
           <CopyToClipboard
             text={
@@ -209,6 +210,7 @@ export const AccountDetails: FC<{
               ? account?.dpos?.delegate?.status
               : "no status"
           }
+          className={"lg:col-start-1"}
         />
       )}
       {legacy && (
@@ -223,7 +225,7 @@ export const AccountDetails: FC<{
               {legacy}
             </a>
           }
-          className={"text-center whitespace-nowrap "}
+          className={"text-center whitespace-nowrap lg:col-start-2 "}
           icon={
             <CopyToClipboard text={legacy}>
               <IconButton className=" focus:text-accentPrimary text-surfacePrimaryDark ">
@@ -247,6 +249,7 @@ export const AccountDetails: FC<{
               "false"
             )
           }
+          className={" lg:col-start-1 "}
         />
       )}
 
@@ -260,36 +263,46 @@ export const AccountDetails: FC<{
             <span>{transactionsCount?.in || received}</span>
           </div>
         }
+        className={" lg:col-start-2 "}
       />
-      <KeyValueRow label="Nonce:" value={account?.sequence?.nonce} />
+      <KeyValueRow
+        label="Nonce:"
+        value={account?.sequence?.nonce}
+        className={" lg:col-start-1 "}
+      />
       {account?.summary?.isDelegate && (
         <KeyValueRow
           label="Forged Blocks"
           value={account?.dpos?.delegate?.producedBlocks || "0"}
+          className={" lg:col-start-2 "}
         />
       )}
       {account?.summary?.isDelegate && (
         <KeyValueRow
           label="Last Forged Height"
           value={lastBlock?.height || "0"}
+          className={" lg:col-start-1 "}
         />
       )}
       {account?.summary?.isDelegate && (
         <KeyValueRow
           label="Max Height Previously Forged"
           value={lastBlock?.maxHeightPreviouslyForged || "0"}
+          className={" lg:col-start-2 "}
         />
       )}
       {account?.summary?.isDelegate && (
         <KeyValueRow
           label="Max Height Prevoted"
           value={lastBlock?.maxHeightPrevoted || "0"}
+          className={" lg:col-start-1 "}
         />
       )}
       {account?.summary?.isDelegate && (
         <KeyValueRow
           label="Last seed reveal"
           value={lastBlock?.seedReveal || "0"}
+          className={" lg:col-start-2 "}
         />
       )}
     </Paper>

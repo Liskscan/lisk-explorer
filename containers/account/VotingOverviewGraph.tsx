@@ -86,7 +86,6 @@ export const VotingOverviewGraph: FC<{ delegate: DelegateAccountData }> = ({
             />
           </div>
         )}
-
       </div>
     </Paper>
   )

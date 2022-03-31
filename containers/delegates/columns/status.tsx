@@ -53,7 +53,7 @@ export const status = {
           </div>
         )
       case "standby":
-        return BigInt(delegate?.liskScan?.voteWeight) > 99000000000n ? (
+        return delegate?.liskScan?.voteWeight && BigInt(delegate?.liskScan?.voteWeight) > 99000000000n ? (
           delegate?.dpos?.delegate?.consecutiveMissedBlocks &&
           delegate?.dpos?.delegate?.consecutiveMissedBlocks > 0 ? (
             <Tooltip

@@ -86,43 +86,6 @@ export const VotingOverviewGraph: FC<{ delegate: DelegateAccountData }> = ({
             />
           </div>
         )}
-        <div className="flex flex-col items-center mx-auto">
-          <span className="flex flex-row space-x-2 mx-auto">
-            <span
-              style={{ color: "#4070F4FF" }}
-              className="flex flex-row space-x-2 mx-auto font-medium "
-            >
-              <Currency
-                beddows={delegate?.liskScan?.selfVote}
-                forceDecimals={0}
-              />
-            </span>
-            <span
-              style={{ color: "#F7E36D" }}
-              className="flex flex-row space-x-2 mx-auto font-medium"
-            >
-              <Currency
-                beddows={(
-                  BigInt(delegate?.dpos?.delegate?.totalVotesReceived || "0") -
-                  BigInt(delegate?.liskScan?.selfVote || "0")
-                )?.toString()}
-                forceDecimals={0}
-              />
-            </span>
-            <span
-              style={{ color: "#C5CFE4FF" }}
-              className="flex flex-row space-x-2 mx-auto font-medium "
-            >
-              <Currency
-                beddows={(
-                  BigInt(delegate?.liskScan?.maxVoteWeight || "0") -
-                  BigInt(delegate?.dpos?.delegate?.totalVotesReceived || "0")
-                )?.toString()}
-                forceDecimals={0}
-              />
-            </span>
-          </span>
-        </div>
       </div>
     </Paper>
   )

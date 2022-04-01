@@ -13,7 +13,7 @@ import { DelegateAccountData } from "@Types"
 export const status = {
   align: "left",
   value: "Status",
-  width: "190px",
+  width: "220px",
   format: (delegate: DelegateAccountData, forgers: ForgersDataType[]) => {
     if (delegate?.dpos?.delegate?.isBanned) {
       return (

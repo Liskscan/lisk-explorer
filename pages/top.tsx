@@ -10,86 +10,88 @@ import { compactString } from "../utils/format"
 export const Top = ({ accountsSSR }: { accountsSSR: AccountDataType[] }) => (
   <>
     <Meta title={"Top accounts"} />
-    <div className="w-full lg:w-2/3 max-w-app mx-auto px-4">
-      <DataTable
-        staticTable
-        ssr={accountsSSR}
-        stickyHeader={true}
-        className="w-full"
-        method={"get.accounts"}
-        oddClassName="bg-background text-onBackground"
-        evenClassName="bg-background text-onBackground"
-        hoverClassName="hover:bg-surface-3"
-        cols={[
-          {
-            style: { width: 30 },
-            value: "#",
-            format: (row, dummy, n: number) => (
-              <div className="text-onSurfaceMedium">{n + 1}</div>
-            ),
-          },
-          {
-            value: "Address",
-            width: "120px",
-            format: (account: AccountDataType) => (
-              <Link
-                href={`/account/[[...slug]]`}
-                link={`/account/${account.summary.address}`}
-                color={"onSurfaceLinkHigh"}
-              >
-                <span className="flex flex-row ">
-                  <Avatar
-                    className="mr-2"
-                    address={account.summary.address}
-                    size={20}
-                  />
-                  <span className="hidden md:flex">
-                    {account.knowledge?.owner ||
-                      account.summary.username ||
-                      account.summary.address}
-                  </span>
-                  <span className="md:hidden">
-                    {account.knowledge?.owner ||
-                      account.summary.username ||
-                      compactString(account.summary.address, 20)}
-                  </span>
-                </span>
-              </Link>
-            ),
-          },
-          {
-            align: "center",
-            value: "Description",
-            format: (account: AccountDataType) => {
-              return (
-                <div className="text-onSurfaceMedium">
-                  {account.knowledge?.description}
-                </div>
-              )
+    <div className="w-full md:w-app max-w-app mx-auto space-y-4 flex flex-col items-center  bg-background text-base">
+      <div className="mx-auto w-full w-full">
+        <DataTable
+          staticTable
+          ssr={accountsSSR}
+          stickyHeader={true}
+          className="w-full"
+          method={"get.accounts"}
+          oddClassName="bg-background text-onBackground"
+          evenClassName="bg-background text-onBackground"
+          hoverClassName="hover:bg-surface-3"
+          cols={[
+            {
+              style: { width: 30 },
+              value: "#",
+              format: (row, dummy, n: number) => (
+                <div className="text-onSurfaceMedium">{n + 1}</div>
+              ),
             },
-          },
-          {
-            align: "right",
-            value: "Balance",
-            width: "20%",
+            {
+              value: "Address",
+              width: "120px",
+              format: (account: AccountDataType) => (
+                <Link
+                  href={`/account/[[...slug]]`}
+                  link={`/account/${account.summary.address}`}
+                  color={"onSurfaceLinkHigh"}
+                >
+                  <span className="flex flex-row ">
+                    <Avatar
+                      className="mr-2"
+                      address={account.summary.address}
+                      size={20}
+                    />
+                    <span className="hidden md:flex">
+                      {account.knowledge?.owner ||
+                        account.summary.username ||
+                        account.summary.address}
+                    </span>
+                    <span className="md:hidden">
+                      {account.knowledge?.owner ||
+                        account.summary.username ||
+                        compactString(account.summary.address, 20)}
+                    </span>
+                  </span>
+                </Link>
+              ),
+            },
+            {
+              align: "center",
+              value: "Description",
+              format: (account: AccountDataType) => {
+                return (
+                  <div className="text-onSurfaceMedium">
+                    {account.knowledge?.description}
+                  </div>
+                )
+              },
+            },
+            {
+              align: "right",
+              value: "Balance",
+              width: "20%",
 
-            format: (account: AccountDataType) => {
-              return (
-                <div className=" font-medium text-right items-center text-onSurfaceDark bg-surfaceDark rounded px-2 py-1">
-                  <Currency
-                    beddows={account.summary.balance || account.token.balance}
-                    forceDecimals={0}
-                  />
-                </div>
-              )
+              format: (account: AccountDataType) => {
+                return (
+                  <div className=" font-medium text-right items-center text-onSurfaceDark bg-surfaceDark rounded px-2 py-1">
+                    <Currency
+                      beddows={account.summary.balance || account.token.balance}
+                      forceDecimals={0}
+                    />
+                  </div>
+                )
+              },
             },
-          },
-        ]}
-        params={{
-          sort: "balance:desc",
-          limit: 100,
-        }}
-      />
+          ]}
+          params={{
+            sort: "balance:desc",
+            limit: 100,
+          }}
+        />
+      </div>
     </div>
   </>
 )

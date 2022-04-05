@@ -98,86 +98,88 @@ export const Network: FC<{ peersSSR: PeersDataType[]; statistics: any }> = ({
             </Paper>
           </div>
         </div>
-        <DataTable
-          ssr={peersSSR}
-          stickyHeader={true}
-          oddClassName="bg-background text-onBackground"
-          evenClassName="bg-background text-onBackground"
-          method={"get.peers"}
-          cols={[
-            {
-              value: "#",
-              width: "120px",
-              format: (peer: PeersDataType, foreign, n) => {
-                return <div className="text-onSurfaceMedium">{n + 1}</div>
+        <div className="mx-auto w-full w-full ">
+          <DataTable
+            ssr={peersSSR}
+            stickyHeader={true}
+            oddClassName="bg-background text-onBackground"
+            evenClassName="bg-background text-onBackground"
+            method={"get.peers"}
+            cols={[
+              {
+                value: "#",
+                width: "120px",
+                format: (peer: PeersDataType, foreign, n) => {
+                  return <div className="text-onSurfaceMedium">{n + 1}</div>
+                },
               },
-            },
-            {
-              value: "IP",
-              width: "120px",
-              format: (peer: PeersDataType) => (
-                <div className="text-onSurfaceMedium">{peer?.ip}</div>
-              ),
-            },
-            {
-              value: "Port",
-              format: (peer: PeersDataType) => (
-                <div className="text-onSurfaceMedium"> {peer?.port}</div>
-              ),
-            },
-            {
-              value: "Location",
-              format: (peer: PeersDataType) =>
-                peer?.location?.countryCode ? (
-                  <Image
-                    src={`/flags/${peer?.location?.countryCode?.toLowerCase()}.svg`}
-                    width={24}
-                    height={18}
-                    alt={`Country flag ${peer?.location?.countryCode}`}
-                  />
-                ) : (
-                  "-"
+              {
+                value: "IP",
+                width: "120px",
+                format: (peer: PeersDataType) => (
+                  <div className="text-onSurfaceMedium">{peer?.ip}</div>
                 ),
-            },
-            {
-              align: "center",
-              value: "Network Version",
-              format: (peer: PeersDataType) => (
-                <div className="text-onSurfaceMedium">
-                  {" "}
-                  {peer?.networkVersion}
-                </div>
-              ),
-            },
-            {
-              value: "Height",
-              format: (peer: PeersDataType) => (
-                <div className="text-onSurfaceMedium"> {peer?.height}</div>
-              ),
-            },
-            {
-              value: "Status",
-              format: (peer: PeersDataType) =>
-                peer?.state === "connected" ? (
-                  <Tooltip label={`Connected`}>
-                    <span
-                      className={"rounded-full w-5 h-5 bg-green flex ml-5"}
-                    />
-                  </Tooltip>
-                ) : (
-                  <Tooltip label={`Disconnected`}>
-                    <span
-                      className={"rounded-full w-5 h-5 bg-yellow flex ml-5"}
-                    />
-                  </Tooltip>
+              },
+              {
+                value: "Port",
+                format: (peer: PeersDataType) => (
+                  <div className="text-onSurfaceMedium"> {peer?.port}</div>
                 ),
-            },
-          ]}
-          params={{
-            limit: 10000,
-            sort: "networkVersion:desc",
-          }}
-        />
+              },
+              {
+                value: "Location",
+                format: (peer: PeersDataType) =>
+                  peer?.location?.countryCode ? (
+                    <Image
+                      src={`/flags/${peer?.location?.countryCode?.toLowerCase()}.svg`}
+                      width={24}
+                      height={18}
+                      alt={`Country flag ${peer?.location?.countryCode}`}
+                    />
+                  ) : (
+                    "-"
+                  ),
+              },
+              {
+                align: "center",
+                value: "Network Version",
+                format: (peer: PeersDataType) => (
+                  <div className="text-onSurfaceMedium">
+                    {" "}
+                    {peer?.networkVersion}
+                  </div>
+                ),
+              },
+              {
+                value: "Height",
+                format: (peer: PeersDataType) => (
+                  <div className="text-onSurfaceMedium"> {peer?.height}</div>
+                ),
+              },
+              {
+                value: "Status",
+                format: (peer: PeersDataType) =>
+                  peer?.state === "connected" ? (
+                    <Tooltip label={`Connected`}>
+                      <span
+                        className={"rounded-full w-5 h-5 bg-green flex ml-5"}
+                      />
+                    </Tooltip>
+                  ) : (
+                    <Tooltip label={`Disconnected`}>
+                      <span
+                        className={"rounded-full w-5 h-5 bg-yellow flex ml-5"}
+                      />
+                    </Tooltip>
+                  ),
+              },
+            ]}
+            params={{
+              limit: 10000,
+              sort: "networkVersion:desc",
+            }}
+          />
+        </div>
       </div>
     </>
   )

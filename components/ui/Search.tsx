@@ -7,11 +7,11 @@ import { useRouter } from "next/router"
 import { Link } from "components/ui/Link"
 import { format } from "utils"
 
-export const Search: FC<{ closeFunction?: any }> = ({ closeFunction }) => {
+export const Search: FC<{ menuCloseFunction?: void | any }> = ({ menuCloseFunction }) => {
   const searchField = useRef(null)
   const router = useRouter()
   const [searchInput, setSearchInput] = useState<string>("")
-  const { results, setSearch, searching, quickResult } = useSearch()
+  const { results, setSearch, searching, quickResult } = useSearch(menuCloseFunction)
   const [hide, setHide] = useState<boolean>()
   useHotkeys("/", () => {
     if (searchField?.current) {
@@ -99,7 +99,7 @@ export const Search: FC<{ closeFunction?: any }> = ({ closeFunction }) => {
               if (e.key === "Enter") {
                 setTimeout(() => {
                   tryQuickResult()
-                  closeFunction !== null && closeFunction()
+                  menuCloseFunction !== null && menuCloseFunction()
                 }, 600)
               }
             }}
@@ -147,6 +147,7 @@ export const Search: FC<{ closeFunction?: any }> = ({ closeFunction }) => {
                             }
                             href={`/${quickResult.type}/${quickResult.id}`}
                             link={`/${quickResult.type}/${quickResult.id}`}
+                            onClick={() => menuCloseFunction !== null && setTimeout(() => menuCloseFunction(), 600)}
                           >
                             <span className="hidden md:block bg-background">
                               {quickResult.id}

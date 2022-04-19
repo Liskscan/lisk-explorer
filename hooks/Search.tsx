@@ -13,7 +13,7 @@ import { Avatar } from "components/ui/Avatar"
 import { useRouter } from "next/router"
 import { Link } from "components"
 
-export const useSearch = () => {
+export const useSearch = (menuCloseFunction: void | any) => {
   const { serviceClient } = useLiskService()
   const router = useRouter()
   const [searchValue, setSearch] = useDebounce("", 140)
@@ -246,8 +246,10 @@ export const useSearch = () => {
                     value: (
                       <div
                         className={"flex flex-col cursor-pointer"}
-                        onClick={() =>
+                        onClick={() => {
                           router.push(`/account/${acc.summary.address}`)
+                          menuCloseFunction !== null && setTimeout(() => menuCloseFunction(), 600)
+                        }
                         }
                       >
                         <span className="flex flex-row space-x-4 items-center">
@@ -288,6 +290,7 @@ export const useSearch = () => {
                       href={`/transaction/[transactionId]`}
                       link={`/transaction/${transaction?.id}`}
                       className={"flex flex-col cursor-pointer"}
+                      onClick={() => menuCloseFunction !== null && setTimeout(() => menuCloseFunction(), 600)}
                     >
                       <span>{transaction?.sender.username}</span>
                       <span className="text-onSurfaceMedium">
@@ -316,6 +319,7 @@ export const useSearch = () => {
                       href={`/block/[blockId]`}
                       link={`/block/${block?.id}`}
                       className={"flex flex-col cursor-pointer"}
+                      onClick={() => menuCloseFunction !== null && setTimeout(() => menuCloseFunction(), 600)}
                     >
                       <span>{block?.generatorUsername}</span>
                       <span>{block?.height}</span>

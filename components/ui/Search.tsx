@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react"
+import { FC, useEffect, useRef, useState } from "react"
 import { Table } from "components/data/table"
 import { TableColsProp } from "@Types"
 import { useSearch } from "hooks/Search"
@@ -7,7 +7,7 @@ import { useRouter } from "next/router"
 import { Link } from "components/ui/Link"
 import { format } from "utils"
 
-export const Search = () => {
+export const Search: FC<{ closeFunction?: any }> = ({ closeFunction }) => {
   const searchField = useRef(null)
   const router = useRouter()
   const [searchInput, setSearchInput] = useState<string>("")
@@ -96,7 +96,12 @@ export const Search = () => {
             }
             onKeyDown={(e) => {
               setHide(false)
-              e.key === "Enter" && setTimeout(() => tryQuickResult(), 600)
+              if (e.key === "Enter") {
+                setTimeout(() => {
+                  tryQuickResult()
+                  closeFunction !== null && closeFunction()
+                }, 600)
+              }
             }}
             autoComplete="off"
             value={searchInput}
@@ -138,7 +143,7 @@ export const Search = () => {
                         value: (
                           <Link
                             className={
-                              "flex flex-col cursor-pointer bg-background "
+                              "flex flex-col cursor-pointer bg-background"
                             }
                             href={`/${quickResult.type}/${quickResult.id}`}
                             link={`/${quickResult.type}/${quickResult.id}`}

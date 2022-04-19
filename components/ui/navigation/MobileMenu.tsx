@@ -42,7 +42,7 @@ export const MobileMenu: FC<TopBarType> = ({ menu, subMenu }) => {
             </div>
           </div>
           <div className="w-app mx-auto flex justify-end mb-3">
-            <Search />
+            <Search closeFunction={() => setOpen(false)}/>
           </div>
           <div className="px-2 pt-2 pb-3 space-y-1 bg-surface-1 mx-4 rounded">
             {menu &&

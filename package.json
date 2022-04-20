@@ -2,6 +2,9 @@
   "name": "@moosty/lisk-explorer",
   "version": "0.1.2",
   "description": "Lisk agnostic explorer connect to lisk-service and start exploring your blockchain",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "init": "npm install --ignore-engines && npm run build",
     "dev": "next",

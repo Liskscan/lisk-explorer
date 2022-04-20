@@ -1,0 +1,70 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": false,
+    "esModuleInterop": true,
+    "pretty": true,
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "outDir": "ts-dist",
+    "baseUrl": ".",
+    "sourceMap": true,
+    "experimentalDecorators": true,
+    "declaration": true,
+    "declarationDir": "ts-dist/types",
+    "paths": {
+      "@Types": [
+        "./shared/interfaces/index.ts"
+      ],
+      "components/*": [
+        "./components/*"
+      ],
+      "@Components": [
+        "./components/index.ts"
+      ],
+      "providers": [
+        "./providers/index.ts"
+      ],
+      "providers/*": [
+        "./providers/*"
+      ],
+      "hooks": [
+        "./hooks/index.ts"
+      ],
+      "hooks/*": [
+        "./hooks/*"
+      ],
+      "assets/*": [
+        "./assets/*"
+      ]
+    }
+  },
+  "include": [
+    "components/*.ts",
+    "components/*.tsx",
+    "containers/*.ts",
+    "containers/*.tsx",
+    "hooks/*.ts",
+    "hooks/*.tsx",
+    "shared/*.ts",
+    "shared/*.tsx",
+    "utils/*.ts",
+    "utils/*.tsx",
+    "index.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

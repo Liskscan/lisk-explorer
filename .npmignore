@@ -1,0 +1,13 @@
+.github
+pages/
+providers/
+.env
+.gitignore
+.prettierrc
+next.config.j
+next-env.d.ts
+pm2.conf.json
+postcss.config.js
+tailwind.config.js
+tsconfig.*
+*.log

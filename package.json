@@ -1,12 +1,14 @@
 {
-  "name": "lisk-explorer",
-  "version": "0.1.0",
+  "name": "@moosty/lisk-explorer",
+  "version": "0.1.2",
   "description": "Lisk agnostic explorer connect to lisk-service and start exploring your blockchain",
   "scripts": {
     "init": "npm install --ignore-engines && npm run build",
     "dev": "next",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "build-package": "rm -rf ./dist && tsc --project tsconfig.components.json",
+    "build-ts-package": "rm -rf ./ts-dist && tsc --project tsconfig.ts-components.json"
   },
   "keywords": [],
   "author": "MoostyTeam <info@moosty.com>",

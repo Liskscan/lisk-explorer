@@ -1,5 +1,8 @@
 import * as utils from "utils"
-import * as Pages from "./pages"
 import * as Types from "@Types"
+import * as components from "components"
+import * as containers from "containers"
+import * as hooks from "hooks"
+import * as shared from "shared"
 
-export { utils, Pages, Types }
+export { utils, Types, components, containers, hooks, shared }

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react"
+import { FC, useEffect, useRef, useState } from "react"
 import { Table } from "components/data/table"
 import { TableColsProp } from "@Types"
 import { useSearch } from "hooks/Search"
@@ -7,11 +7,11 @@ import { useRouter } from "next/router"
 import { Link } from "components/ui/Link"
 import { format } from "utils"
 
-export const Search = () => {
+export const Search: FC<{ menuCloseFunction?: void | any }> = ({ menuCloseFunction }) => {
   const searchField = useRef(null)
   const router = useRouter()
   const [searchInput, setSearchInput] = useState<string>("")
-  const { results, setSearch, searching, quickResult } = useSearch()
+  const { results, setSearch, searching, quickResult } = useSearch(menuCloseFunction)
   const [hide, setHide] = useState<boolean>()
   useHotkeys("/", () => {
     if (searchField?.current) {
@@ -96,7 +96,12 @@ export const Search = () => {
             }
             onKeyDown={(e) => {
               setHide(false)
-              e.key === "Enter" && setTimeout(() => tryQuickResult(), 600)
+              if (e.key === "Enter") {
+                setTimeout(() => {
+                  tryQuickResult()
+                  menuCloseFunction !== null && menuCloseFunction()
+                }, 600)
+              }
             }}
             autoComplete="off"
             value={searchInput}
@@ -138,10 +143,11 @@ export const Search = () => {
                         value: (
                           <Link
                             className={
-                              "flex flex-col cursor-pointer bg-background "
+                              "flex flex-col cursor-pointer bg-background"
                             }
                             href={`/${quickResult.type}/${quickResult.id}`}
                             link={`/${quickResult.type}/${quickResult.id}`}
+                            onClick={() => menuCloseFunction !== null && setTimeout(() => menuCloseFunction(), 600)}
                           >
                             <span className="hidden md:block bg-background">
                               {quickResult.id}

@@ -13,7 +13,7 @@ export const Info = () => (
     <div className="w-full md:w-app max-w-app mx-auto space-y-4 flex flex-col items-center  bg-background mb-4  ">
       <ChainInfoKPIS kpiList={infoKPIBlocks} />
     </div>
-    <div className="flex flex-col md:flex-row w-full md:w-app max-w-app mx-auto md:space-x-4 justify-center mb-4">
+    <div className="flex flex-col md:flex-row w-full md:w-app max-w-app mx-auto space-y-4 md:space-y-0 md:space-x-4 justify-center mb-4">
       <ServiceData />
       <ReadyStatus />
     </div>

@@ -20,7 +20,7 @@ export const ServiceData: FC = () => {
   }, [serviceClient])
   return (
     <Paper
-      className=" z-20 flex-wrap md:flex-nowrap justify-around md:justify-between w-full  md:p-4"
+      className=" z-20 flex-wrap md:flex-nowrap justify-around md:justify-between w-app p-6 md:p-4 mx-auto"
       surface={1}
       shadow={0}
     >
@@ -29,33 +29,29 @@ export const ServiceData: FC = () => {
       </h1>
       <div className="flex  flex-wrap md:flex-nowrap flex-row justify-around md:justify-between w-full ">
         <div className="flex flex-col flex-grow justify-between rounded  ">
-          <div className="hidden md:inline-flex">
+          <div className="md:inline-flex">
             <KeyValueRow
               label="Name"
               value={serviceStatus?.name}
-              className={"text-center"}
             />
           </div>
-          <div className="hidden md:inline-flex">
+          <div className="md:inline-flex">
             <KeyValueRow
               label="Description"
               value={serviceStatus?.description}
-              className={"text-center"}
             />
           </div>
-          <div className="hidden md:inline-flex">
+          <div className="md:inline-flex">
             <KeyValueRow
               label="Build"
               value={serviceStatus?.build}
-              className={"text-center"}
             />
           </div>
 
-          <div className="hidden md:inline-flex">
+          <div className="md:inline-flex">
             <KeyValueRow
               label="Version"
               value={serviceStatus?.version}
-              className={"text-center"}
             />
           </div>
         </div>

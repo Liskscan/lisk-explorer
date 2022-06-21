@@ -12,7 +12,6 @@ export const Tooltip: FC<TooltipProps> = ({
 
   return (
     <div
-      //className={"relative md:static"}
       onMouseEnter={() => setVisibility(true)}
       onMouseLeave={() => setVisibility(false)}
     >

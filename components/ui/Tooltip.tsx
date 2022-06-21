@@ -12,6 +12,7 @@ export const Tooltip: FC<TooltipProps> = ({
 
   return (
     <div
+      //className={"relative md:static"}
       onMouseEnter={() => setVisibility(true)}
       onMouseLeave={() => setVisibility(false)}
     >
@@ -21,7 +22,7 @@ export const Tooltip: FC<TooltipProps> = ({
           visibility ? "inline-block" : "hidden",
           "absolute mx-auto bg-background text-onSurfaceHigh",
           "max-w-sm p-2 px-4 text-base text-center rounded",
-          "shadow-lg  z-50 flex place-self-auto",
+          "shadow-lg z-50 flex place-self-auto w-max",
           positionBottom
             ? "flex place-self-auto mt-2"
             : positionTop

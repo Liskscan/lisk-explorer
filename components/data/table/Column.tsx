@@ -12,6 +12,7 @@ export const Column: FC<TableCols> = ({
   <td
     style={style}
     className={[
+      "relative",
       "border-surfaceDark",
       "table-cell",
       "tableColumn",
